@@ -1,0 +1,35 @@
+<h2>My Heroes</h2>
+<div>
+  <label>Hero name:</label>
+  <input #heroName />
+  <input id="can-fly" type="checkbox" [(ngModel)]="canFly"> can fly
+</div>
+<div>
+  <button (click)="add(heroName.value); heroName.value=''">
+    Add
+  </button>
+</div>
+<div *ngIf="heroes">
+  <h3>Flying Heroes</h3>
+  <ul class="heroes">
+    <li *ngFor="let hero of (heroes | flyingHeroes)" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+      <span class="badge">{{hero.id}}</span>
+      <span>{{hero.name}}</span>
+      <button class="delete" (click)="delete(hero); $event.stopPropagation()">x</button>
+    </li>
+  </ul>
+  <h3>Non-Flying Heroes</h3>
+  <ul class="heroes">
+    <li *ngFor="let hero of (heroes | flyingHeroes:false)" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+      <span class="badge">{{hero.id}}</span>
+      <span>{{hero.name}}</span>
+      <button class="delete" (click)="delete(hero); $event.stopPropagation()">x</button>
+    </li>
+  </ul>
+</div>
+<div *ngIf="selectedHero">
+  <h2>
+    {{selectedHero.name | uppercase}} is my hero
+  </h2>
+  <button (click)="goToDetail()">View Details</button>
+</div>
