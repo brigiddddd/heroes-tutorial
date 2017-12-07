@@ -30,6 +30,6 @@ export class FlyingHeroesComponent {
 
   reset() {
     this.heroService.getHeroes()
-      .then(heroes => this.heroes = heroes.slice());
+      .subscribe(heroes => this.heroes = heroes.slice());
   }
 }

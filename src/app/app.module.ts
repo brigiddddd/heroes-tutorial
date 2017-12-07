@@ -22,6 +22,8 @@ import { ExponentialStrengthPipe } from './exponential-strength.pipe';
 import { PowerBoosterCalculatorComponent } from './power-boost-calculator.component';
 import { FlyingHeroesComponent } from './flying-heroes.component';
 import { SizerComponent } from './sizer.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 @NgModule({
   imports: [
@@ -42,9 +44,10 @@ import { SizerComponent } from './sizer.component';
     ExponentialStrengthPipe,
     FlyingHeroesComponent,
     FlyingHeroesPipe,
-    SizerComponent
+    SizerComponent,
+    MessagesComponent
   ],
-  providers: [ HeroService ],
+  providers: [ HeroService, MessageService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
