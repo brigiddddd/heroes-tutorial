@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { Headers, Http } from '@angular/http';
-// import 'rxjs/add/operator/toPromise';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -22,7 +20,6 @@ const httpOptions = {
 @Injectable()
 export class HeroService {
   private heroesUrl = 'api/heroes'; // URL to web api
-  // private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(
     private http: HttpClient,
@@ -42,15 +39,6 @@ export class HeroService {
         catchError(this.handleError<Hero>(`getHero id=${id}`))
       );
   }
-  /*
-  getHero(id: number): Promise<Hero> {
-    // return this.getHeroes().then(heroes => heroes.find(hero => hero.id === id));
-    const url = `${this.heroesUrl}/${id}`;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as Hero)
-      .catch(this.handleError);
-  }*/
 
   getHeroes(): Observable<Hero[]> {
     return this.http
@@ -60,15 +48,6 @@ export class HeroService {
         catchError(this.handleError('getHeroes', []))
       );
   }
-
-  /*
-  getHeroes(): Promise<Hero[]> {
-    // return Promise.resolve(HEROES);
-    return this.http.get(this.heroesUrl)
-      .toPromise()
-      .then(response => response.json() as Hero[])
-      .catch(this.handleError);
-  }*/
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -82,11 +61,6 @@ export class HeroService {
       return of(result as T);
     };
   }
-  /*
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
-  }*/
 
   getHeroesSlowly(): Observable<Hero[]> {
     return new Observable(_ => {
@@ -94,15 +68,6 @@ export class HeroService {
       setTimeout(() => this.getHeroes(), 2000); // TODO: VERIFY THIS
     });
   }
-
-  /*
-  getHeroesSlowly(): Promise<Hero[]> {
-    return new Promise(resolve => {
-      // Simulate server latency with 2 second delay
-      setTimeout(() => resolve(this.getHeroes()), 2000);
-    });
-  }
-*/
 
   updateHero(hero: Hero): Observable<any> {
     return this.http
@@ -112,16 +77,6 @@ export class HeroService {
         catchError(this.handleError<any>('updateHero'))
       );
   }
-  /*
-  update(hero: Hero): Promise<Hero> {
-    const url = `${this.heroesUrl}/${hero.id}`;
-    return this.http
-      .put(url, JSON.stringify(hero), { headers: this.headers })
-      .toPromise()
-      .then(() => hero)
-      .catch(this.handleError);
-  }
-*/
 
   addHero(hero: Hero): Observable<Hero> {
     return this.http
@@ -132,17 +87,6 @@ export class HeroService {
       );
   }
 
-  /*
-  create(name: string, canFly: boolean): Promise<Hero> {
-    return this.http
-      .post(this.heroesUrl, JSON.stringify({ name: name, canFly: canFly }), {
-        headers: this.headers
-      })
-      .toPromise()
-      .then(res => res.json() as Hero)
-      .catch(this.handleError);
-  }
-  */
   deleteHero(hero: Hero | number): Observable<Hero> {
     const id = typeof hero === 'number' ? hero : hero.id;
     const url = `${this.heroesUrl}/${id}`;
@@ -153,16 +97,6 @@ export class HeroService {
         catchError(this.handleError<Hero>('deleteHero'))
       );
   }
-  /*
-  delete(id: number): Promise<void> {
-    const url = `${this.heroesUrl}/${id}`;
-    return this.http
-      .delete(url, { headers: this.headers })
-      .toPromise()
-      .then(() => null)
-      .catch(this.handleError);
-  }
-  */
 
   searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) {

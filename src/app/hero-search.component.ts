@@ -7,7 +7,6 @@ import { of } from 'rxjs/observable/of';
 
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
-// import { HeroSearchService } from './hero-search.service';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
@@ -15,7 +14,6 @@ import { HeroService } from './hero.service';
   selector: 'hero-search',
   templateUrl: './hero-search.component.html',
   styleUrls: ['./hero-search.component.css']
-  // providers: [HeroSearchService]
 })
 export class HeroSearchComponent implements OnInit {
   heroes$: Observable<Hero[]>;
