@@ -2,8 +2,12 @@
   <h4>Hero Search</h4>
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
   <div>
-    <div *ngFor="let hero of heroes | async"
-         (click)="gotoDetail(hero)" class="search-result" >
+    <!--
+The $ is a convention that indicates heroes$ is an Observable, not an array.
+The *ngFor can't do anything with an Observable. But there's also a pipe character (|) followed by async, which identifies Angular's AsyncPipe.
+The AsyncPipe subscribes to an Observable automatically so you won't have to do so in the component class.
+-->
+    <div *ngFor="let hero of heroes$ | async" (click)="gotoDetail(hero)" class="search-result">
       {{hero.name}}
     </div>
   </div>

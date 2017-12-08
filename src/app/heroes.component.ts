@@ -29,7 +29,7 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     // this.heroService.getHeroes().then(heroes => this.heroes = heroes);
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+    this.heroService.getHeroes().subscribe(heroes => (this.heroes = heroes));
   }
 
   goToDetail(): void {
@@ -38,25 +38,23 @@ export class HeroesComponent implements OnInit {
 
   add(name: string): void {
     name = name.trim();
-    if (!name) { return; }
-    this.heroService.create(name, this.canFly)
-      .then(hero => {
+    if (!name) {
+      return;
+    }
+    this.heroService
+      .addHero({ name, canFly: this.canFly } as Hero)
+      .subscribe(hero => {
         this.heroes.push(hero);
         this.selectedHero = null;
-      })
-      .catch(function(reason) {
-        console.log(reason);
       });
   }
 
   delete(hero: Hero): void {
-    this.heroService
-        .delete(hero.id)
-        .then(() => {
-            this.heroes = this.heroes.filter(h => h !== hero);
-            if (this.selectedHero === hero) { this.selectedHero = null; }
-        });
+    this.heroService.deleteHero(hero).subscribe(() => {
+      this.heroes = this.heroes.filter(h => h !== hero);
+      if (this.selectedHero === hero) {
+        this.selectedHero = null;
+      }
+    });
   }
-
 }
-
