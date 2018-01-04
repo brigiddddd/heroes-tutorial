@@ -1,3 +1,5 @@
+import { ComponentInteractionModule } from './component-interaction/component-interaction.module';
+
 import { FlyingHeroesPipe } from './flying-heroes.pipe';
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,6 +30,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { MessageService } from './message.service';
   // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    AppRoutingModule
+    AppRoutingModule,
+    ComponentInteractionModule
   ],
   declarations: [
     AppComponent,
