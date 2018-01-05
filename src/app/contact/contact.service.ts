@@ -20,10 +20,10 @@ const FETCH_LATENCY = 500;
 @Injectable()
 export class ContactService implements OnDestroy {
   constructor(private messageService: MessageService) {
-    console.log('ContactService instance created.');
+    this.log('instance created.');
   }
   ngOnDestroy() {
-    console.log('ContactService instance destroyed.');
+    this.log('instance destroyed.');
   }
 
   getContacts(): Observable<Contact[]> {

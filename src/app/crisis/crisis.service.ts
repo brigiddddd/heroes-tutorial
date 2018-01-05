@@ -22,10 +22,10 @@ const FETCH_LATENCY = 500;
 @Injectable()
 export class CrisisService implements OnDestroy {
   constructor(private messageService: MessageService) {
-    console.log('CrisisService instance created.');
+    this.log('instance created.');
   }
   ngOnDestroy() {
-    console.log('CrisisService instance destroyed.');
+    this.log('instance destroyed.');
   }
 
   getCrises(): Observable<Crisis[]> {

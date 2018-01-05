@@ -25,11 +25,11 @@ export class HeroService implements OnDestroy {
     private http: HttpClient,
     private messageService: MessageService
   ) {
-    console.log('HeroService instance created.');
+    this.log('HeroService instance created.');
   }
 
   ngOnDestroy() {
-    console.log('HeroService instance destroyed.');
+    this.log('HeroService instance destroyed.');
   }
 
   private log(message: string) {

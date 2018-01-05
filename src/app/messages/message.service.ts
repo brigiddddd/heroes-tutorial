@@ -1,8 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 
 @Injectable()
-export class MessageService {
+export class MessageService implements OnDestroy {
   messages: string[] = [];
+
+  constructor() {
+    this.log('instance created.');
+  }
+
+  ngOnDestroy() {
+    this.log('instance destroyed.');
+  }
 
   add(message: string) {
     this.messages.push(message);
@@ -10,5 +18,9 @@ export class MessageService {
 
   clear() {
     this.messages = [];
+  }
+
+  log(msg: string) {
+    this.messages.push('MessageService; ' + msg);
   }
 }

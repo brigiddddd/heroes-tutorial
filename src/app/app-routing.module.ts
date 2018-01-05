@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ContactModule } from './contact/contact.module';
 
-// import { DashboardComponent } from './dashboard.component';
-// import { HeroDetailComponent } from './heroes/hero-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'contact', pathMatch: 'full' },
