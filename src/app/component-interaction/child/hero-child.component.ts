@@ -2,7 +2,7 @@
 // HeroChildComponent has two input properties, typically adorned with @Input decorations.
 
 import { Component, Input } from '@angular/core';
-import { Hero } from '../../hero';
+import { Hero } from '../../heroes/hero';
 
 @Component({
   selector: 'app-hero-child',

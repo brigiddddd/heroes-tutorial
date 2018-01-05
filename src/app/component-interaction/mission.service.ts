@@ -1,3 +1,4 @@
+import { MessageService } from './../messages/message.service';
 // Parent and children communicate via a service
 // A parent component and its children share a service whose interface enables bi - directional communication within the family.
 
@@ -10,6 +11,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class MissionService {
+  constructor(private messageService: MessageService) {}
+
   // Observable string sources
   private missionAnnouncedSource = new Subject<string>();
   private missionConfirmedSource = new Subject<string>();
@@ -21,9 +24,15 @@ export class MissionService {
   // Service message commands
   announceMission(mission: string) {
     this.missionAnnouncedSource.next(mission);
+    this.log('mission announced');
   }
 
   confirmMission(astronaut: string) {
     this.missionConfirmedSource.next(astronaut);
+    this.log('mission confirmed');
   }
- }
+
+  private log(message: string) {
+    this.messageService.add('MissionService: ' + message);
+  }
+}

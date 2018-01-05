@@ -13,9 +13,10 @@ import { HeroChildComponent } from './child/hero-child.component';
 import { CountdownTimerComponent } from './child/countdown-timer.component';
 import { CountdownLocalVarParentComponent, CountdownViewChildParentComponent } from './parent/countdown-parent.component';
 import { MissionControlComponent } from './parent/missioncontrol.component';
+import { ComponentInteractionRoutingModule } from './componentInteraction-routing.module';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, ComponentInteractionRoutingModule],
   declarations: [
     ComponentInteractionComponent,
     HeroChildComponent,

@@ -4,8 +4,8 @@
 // binding its master string property to the child's master alias,
 // and each iteration's hero instance to the child's hero property.
 
-import { HEROES } from './../../mock-heroes';
 import { Component } from '@angular/core';
+import { HEROES } from '../../heroes/mock-heroes';
 
 @Component({
   selector: 'app-hero-parent',

@@ -1,12 +1,17 @@
 <app-title></app-title>
+
 <nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/heroes">Heroes</a>
-  <a routerLink="/componentInteraction">Component Interaction</a>
+  <a routerLink="contact" routerLinkActive="active">Contact</a>
+  <a routerLink="crisis" routerLinkActive="active">Crisis Center</a>
+  <a routerLink="heroes" routerLinkActive="active">Heroes</a>
+  <!-- <a routerLink="/dashboard">Dashboard</a> -->
+  <a routerLink="componentInteraction">Component Interaction</a>
 </nav>
 <router-outlet></router-outlet>
 
 <app-messages></app-messages>
+
+
 <!--
 <hr><h2 id="two-way">Two-way Binding</h2>
 <div id="two-way-1">
