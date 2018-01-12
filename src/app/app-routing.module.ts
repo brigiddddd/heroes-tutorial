@@ -1,3 +1,4 @@
+import { CanDeactivateGuard } from './can-deactivate-guard.service';
 import { AdminComponent } from './admin/admin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -19,6 +20,7 @@ const routes: Routes = [
     // should only be called once in entire app
     RouterModule.forRoot(routes)
   ],
-  exports: [RouterModule] // makes router directives available to companion module that imports it
+  exports: [RouterModule], // makes router directives available to companion module that imports it
+  providers: [CanDeactivateGuard]
 })
 export class AppRoutingModule {}

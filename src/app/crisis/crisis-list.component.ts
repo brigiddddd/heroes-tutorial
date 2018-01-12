@@ -1,4 +1,4 @@
-import { switchMap } from 'rxjs/operators';
+import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 

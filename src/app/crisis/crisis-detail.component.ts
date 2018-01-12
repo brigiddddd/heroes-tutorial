@@ -6,43 +6,65 @@ import 'rxjs/add/operator/switchMap';
 
 import { CrisisService, Crisis } from './crisis.service';
 import { slideInDownAnimation } from '../animations';
+import { Observable } from 'rxjs/Observable';
+import { DialogService } from '../dialog.service';
 
 @Component({
   selector: 'crisis-detail',
   templateUrl: './crisis-detail.component.html',
+  styles: ['input {width: 20em}'],
   animations: [slideInDownAnimation]
 })
 export class CrisisDetailComponent implements OnInit {
-  constructor(
-    private crisisService: CrisisService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private location: Location
-  ) {}
-
-  @Input() crisis: Crisis;
-
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
   // @HostBinding('style.position') position = 'absolute';
 
+  // @Input() crisis: Crisis;
+  crisis: Crisis;
+  editName: string;
+
+  constructor(
+    private crisisService: CrisisService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialogService: DialogService
+  ) {}
+
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.crisisService
-      .getCrisis(+id)
-      .subscribe(crisis => (this.crisis = crisis));
+    this.route.paramMap
+      .switchMap((params: ParamMap) =>
+        this.crisisService.getCrisis(+params.get('id'))
+      )
+      .subscribe(crisis => {
+        this.crisis = crisis;
+        this.editName = crisis.name;
+      });
   }
 
-  goToCrises(crisis: Crisis) {
-    const crisisId = crisis ? crisis.id : null;
+  cancel() {
+    this.goToCrises();
+  }
+
+  save() {
+    this.crisis.name = this.editName;
+    this.goToCrises();
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    if (!this.crisis || this.crisis.name === this.editName) {
+      return true;
+    }
+    return this.dialogService.confirm('Discard changes?');
+  }
+
+  goToCrises() {
+    const crisisId = this.crisis ? this.crisis.id : null;
     // Pass along the crisis id if available
     // so thatthe HeroList component can select that crisis.
     // Include a junk 'foo property for fun
-    this.router.navigate(['/crisis-center', { id: crisisId, foo: 'foo' }]);
-  }
-
-  goBack(): void {
-    // TODO: NOT YET USED
-    this.location.back();
+    this.router.navigate(['../', { id: crisisId, foo: 'foo' }], {
+      relativeTo: this.route
+    });
   }
 }

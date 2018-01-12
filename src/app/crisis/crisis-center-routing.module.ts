@@ -1,13 +1,19 @@
-import { NgModule } from '@angular/core';
-import { Routes,
-         RouterModule }        from '@angular/router';
-import { CrisisListComponent } from './crisis-list.component';
-import { CrisisDetailComponent } from './crisis-detail.component';
-import { CrisisCenterHomeComponent } from './crisis-center-home.component';
-import { CrisisCenterComponent } from './crisis-center.component';
+import { NgModule }             from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-// At the top level, paths that start with '/' refer to the root of the application. Child routes extend the path
+import { CrisisCenterHomeComponent } from './crisis-center-home.component';
+import { CrisisListComponent }       from './crisis-list.component';
+import { CrisisCenterComponent }     from './crisis-center.component';
+import { CrisisDetailComponent }     from './crisis-detail.component';
+
+import { CanDeactivateGuard }    from '../can-deactivate-guard.service';
+
 const crisisCenterRoutes: Routes = [
+  {
+    path: '',
+    redirectTo: '/crisis-center',
+    pathMatch: 'full'
+  },
   {
     path: 'crisis-center',
     component: CrisisCenterComponent,
@@ -18,7 +24,8 @@ const crisisCenterRoutes: Routes = [
         children: [
           {
             path: ':id',
-            component: CrisisDetailComponent
+            component: CrisisDetailComponent,
+            canDeactivate: [CanDeactivateGuard]
           },
           {
             path: '',
@@ -31,7 +38,11 @@ const crisisCenterRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(crisisCenterRoutes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forChild(crisisCenterRoutes)
+  ],
+  exports: [
+    RouterModule
+  ]
 })
-export class CrisisCenterRoutingModule {}
+export class CrisisCenterRoutingModule { }
