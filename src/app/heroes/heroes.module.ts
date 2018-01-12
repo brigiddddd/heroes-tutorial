@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DashboardComponent } from './dashboard.component';
-import { HeroesListComponent } from './heroes-list.component';
+import { HeroListComponent } from './hero-list.component';
 import { HeroesRoutingModule } from './heroes-routing.module';
 import { InMemoryDataService } from './in-memory-data.service';
 
@@ -41,7 +41,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     HeroesComponent,
     HeroDetailComponent,
     HeroSearchComponent,
-    HeroesListComponent,
+    HeroListComponent,
     HeroBirthdayComponent,
     PowerBoosterCalculatorComponent,
     ExponentialStrengthPipe,

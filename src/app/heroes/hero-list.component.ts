@@ -6,11 +6,11 @@ import { HeroService } from './hero.service';
 
 @Component({
   selector: 'my-heroes',
-  styleUrls: ['./heroes-list.component.css'],
-  templateUrl: 'heroes-list.component.html',
+  styleUrls: ['./hero-list.component.css'],
+  templateUrl: 'hero-list.component.html',
   providers: []
 })
-export class HeroesListComponent implements OnInit {
+export class HeroListComponent implements OnInit {
   heroes: Hero[];
   canFly: boolean;
   selectedHero: Hero;
