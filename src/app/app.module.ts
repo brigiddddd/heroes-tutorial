@@ -1,4 +1,4 @@
-import { PageNotFoundComponent } from './not-found.component';
+import { DialogService } from './dialog.service';
 import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,8 +8,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeroesModule } from './heroes/heroes.module';
 import { FormsModule } from '@angular/forms';
-import { CrisisModule } from './crisis/crisis.module';
-import { CrisisListComponent } from './crisis/crisis-list.component';
+import { PageNotFoundComponent } from './not-found.component';
+import { CrisisCenterModule } from './crisis/crisis-center.module';
+import { ComposeMessageComponent } from './compose-message.component';
+
 
 @NgModule({
   imports: [
@@ -17,11 +19,12 @@ import { CrisisListComponent } from './crisis/crisis-list.component';
     BrowserAnimationsModule,
     FormsModule,
     CoreModule.forRoot({ userName: 'Miss Marple' }),
-    // CrisisModule,
+    CrisisCenterModule,
     HeroesModule,
     AppRoutingModule
   ],
-  declarations: [AppComponent, CrisisListComponent, PageNotFoundComponent],
+  declarations: [AppComponent, PageNotFoundComponent, ComposeMessageComponent],
+  providers: [DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

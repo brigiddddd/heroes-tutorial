@@ -28,11 +28,11 @@ export class HeroDetailComponent implements OnInit {
   // @HostBinding('style.position') position = 'absolute';
 
   ngOnInit(): void {
-    this.route.paramMap
-      .switchMap((params: ParamMap) =>
-        this.heroService.getHero(+params.get('id'))
-      )
-      .subscribe(hero => (this.hero = hero));
+    // this.route.paramMap
+    //   .switchMap((params: ParamMap) =>
+    //     this.heroService.getHero(+params.get('id'))
+    //   )
+    //   .subscribe(hero => (this.hero = hero));
 
     const id = this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(+id).subscribe(hero => (this.hero = hero));

@@ -1,13 +1,16 @@
 <app-title></app-title>
 
 <nav>
-  <a routerLink="contact" routerLinkActive="active">Contact</a>
   <a routerLink="crisis-center" routerLinkActive="active">Crisis Center</a>
   <a routerLink="heroes" routerLinkActive="active">Heroes</a>
+  <a routerLink="contact" routerLinkActive="active">Contacts</a>
+  <a [routerLink]="[{outlets: {popup: ['compose']}}]">Contact</a>
+
   <!-- <a routerLink="/dashboard">Dashboard</a> -->
   <a routerLink="componentInteraction">Component Interaction</a>
 </nav>
 <router-outlet></router-outlet>
+<router-outlet name="popup"></router-outlet>
 
 <app-messages></app-messages>
 
