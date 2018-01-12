@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
+import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
@@ -14,17 +17,29 @@ export class HeroListComponent implements OnInit {
   heroes: Hero[];
   canFly: boolean;
   selectedHero: Hero;
+  private selectedId: number; // TODO: COMBINE selectedId and selectedHero
 
-  constructor(private heroService: HeroService, private router: Router) {
+  constructor(
+    private heroService: HeroService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.canFly = false;
   }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.route.paramMap
+      .switchMap((params: ParamMap) => {
+        // (+) before params.get() turns the string into a number
+        this.selectedId = +params.get('id'); // TODO: THIS ISN"T FULLY UTILIZED
+        return this.heroService.getHeroes();
+      })
+      .subscribe(heroes => (this.heroes = heroes));
   }
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+    this.selectedId = hero.id;
   }
 
   getHeroes(): void {
@@ -32,7 +47,7 @@ export class HeroListComponent implements OnInit {
   }
 
   goToDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
+    this.router.navigate(['/hero', this.selectedHero.id]);
   }
 
   add(name: string): void {
@@ -45,6 +60,7 @@ export class HeroListComponent implements OnInit {
       .subscribe(hero => {
         this.heroes.push(hero);
         this.selectedHero = null;
+        this.selectedId = null;
       });
   }
 
@@ -53,6 +69,7 @@ export class HeroListComponent implements OnInit {
       this.heroes = this.heroes.filter(h => h !== hero);
       if (this.selectedHero === hero) {
         this.selectedHero = null;
+        this.selectedId = null;
       }
     });
   }

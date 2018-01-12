@@ -6,16 +6,18 @@ import { DashboardComponent } from './dashboard.component';
 import { HeroListComponent } from './hero-list.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: HeroesComponent,
-    children: [
-      // { path: '', component: HeroesListComponent },
-      { path: '', redirectTo: 'dashboard'},
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'detail/:id', component: HeroDetailComponent }
-    ]
-  }
+  // {
+  //   path: '',
+  //   component: HeroesComponent,
+  //   children: [
+  //     // { path: '', component: HeroesListComponent },
+  //     { path: '', redirectTo: 'dashboard'},
+  //     { path: 'dashboard', component: DashboardComponent },
+  //     { path: 'detail/:id', component: HeroDetailComponent }
+  //   ]
+  // }
+  { path: 'heroes', component: HeroListComponent },
+  { path: 'hero/:id', component: HeroDetailComponent }
 ];
 
 @NgModule({

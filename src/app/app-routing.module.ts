@@ -1,3 +1,4 @@
+import { CrisisListComponent } from './crisis/crisis-list.component';
 import { PageNotFoundComponent } from './not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,7 +9,6 @@ import { ContactModule } from './contact/contact.module';
 const routes: Routes = [
 
   { path: 'crisis-center', component: CrisisListComponent },
-  { path: 'heroes', component: HeroListComponent },
   { path: '', redirectTo: '/heroes', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
