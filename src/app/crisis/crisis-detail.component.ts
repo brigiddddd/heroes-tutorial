@@ -32,14 +32,10 @@ export class CrisisDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap
-      .switchMap((params: ParamMap) =>
-        this.crisisService.getCrisis(+params.get('id'))
-      )
-      .subscribe(crisis => {
-        this.crisis = crisis;
-        this.editName = crisis.name;
-      });
+    this.route.data.subscribe((data: { crisis: Crisis }) => {
+      this.editName = data.crisis.name;
+      this.crisis = data.crisis;
+    });
   }
 
   cancel() {
