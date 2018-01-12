@@ -1,3 +1,4 @@
+import { AdminModule } from './admin/admin.module';
 import { DialogService } from './dialog.service';
 import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,11 @@ import { FormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './not-found.component';
 import { CrisisCenterModule } from './crisis/crisis-center.module';
 import { ComposeMessageComponent } from './compose-message.component';
-
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
+import { LoginRoutingModule } from './login-routing.module';
+import { LoginComponent } from './login.component';
+import { Router } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -21,10 +26,17 @@ import { ComposeMessageComponent } from './compose-message.component';
     CoreModule.forRoot({ userName: 'Miss Marple' }),
     CrisisCenterModule,
     HeroesModule,
+    LoginRoutingModule,
+    AdminModule,
     AppRoutingModule
   ],
-  declarations: [AppComponent, PageNotFoundComponent, ComposeMessageComponent],
+  declarations: [AppComponent, PageNotFoundComponent, ComposeMessageComponent, LoginComponent],
   providers: [DialogService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  // Diagnostic only
+  constructor(router: Router) {
+    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+  }
+}
