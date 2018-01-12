@@ -6,19 +6,11 @@ import { ContactModule } from './contact/contact.module';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'contact', pathMatch: 'full' },
-  // LAZY LOADING:
-  { path: 'crisis', loadChildren: 'app/crisis/crisis.module#CrisisModule' },
-  { path: 'heroes', loadChildren: 'app/heroes/heroes.module#HeroesModule' },
-  { path: 'componentInteraction', loadChildren: 'app/component-interaction/component-interaction.module#ComponentInteractionModule' },
-  { path: '**', component: PageNotFoundComponent }
 
-  // TODO:
-  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  // { path: 'dashboard', component: DashboardComponent },
-  // { path: 'detail/:id', component: HeroDetailComponent },
-  // { path: 'heroes', component: HeroesComponent },
-  // { path: 'componentInteraction', component: ComponentInteractionComponent }
+  { path: 'crisis-center', component: CrisisListComponent },
+  { path: 'heroes', component: HeroListComponent },
+  { path: '', redirectTo: '/heroes', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
