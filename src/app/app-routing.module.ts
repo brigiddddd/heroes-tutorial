@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'crisis', loadChildren: 'app/crisis/crisis.module#CrisisModule' },
   { path: 'heroes', loadChildren: 'app/heroes/heroes.module#HeroesModule' },
   { path: 'componentInteraction', loadChildren: 'app/component-interaction/component-interaction.module#ComponentInteractionModule' },
+  { path: '**', component: PageNotFoundComponent }
 
   // TODO:
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },

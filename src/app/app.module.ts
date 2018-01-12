@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './not-found.component';
 import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
     CoreModule.forRoot({ userName: 'Miss Marple' }),
     AppRoutingModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, PageNotFoundComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
