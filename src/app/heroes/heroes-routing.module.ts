@@ -16,8 +16,10 @@ const routes: Routes = [
   //     { path: 'detail/:id', component: HeroDetailComponent }
   //   ]
   // }
-  { path: 'heroes', component: HeroListComponent },
-  { path: 'hero/:id', component: HeroDetailComponent }
+  { path: 'heroes', redirectTo: '/superheroes' },
+  { path: 'hero/:id', redirectTo: '/superhero/:id' },
+  { path: 'superheroes', component: HeroListComponent },
+  { path: 'superhero/:id', component: HeroDetailComponent }
 ];
 
 @NgModule({

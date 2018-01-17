@@ -10,7 +10,6 @@ import { ComposeMessageComponent } from './compose-message.component';
 import { AuthGuard } from './auth-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/heroes', pathMatch: 'full' },
   { path: 'compose', component: ComposeMessageComponent, outlet: 'popup' },
   {
     path: 'admin',
@@ -22,6 +21,7 @@ const routes: Routes = [
     loadChildren: 'app/crisis/crisis-center.module#CrisisCenterModule',
     data: { preload: true }
   },
+  { path: '', redirectTo: '/superheroes', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
