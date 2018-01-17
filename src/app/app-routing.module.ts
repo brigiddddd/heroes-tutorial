@@ -1,7 +1,8 @@
+import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
 import { CanDeactivateGuard } from './can-deactivate-guard.service';
 import { AdminComponent } from './admin/admin.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { ContactModule } from './contact/contact.module';
 import { PageNotFoundComponent } from './not-found.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'crisis-center',
-    loadChildren: 'app/crisis/crisis-center.module#CrisisCenterModule'
+    loadChildren: 'app/crisis/crisis-center.module#CrisisCenterModule',
+    data: { preload: true }
   },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -30,10 +32,10 @@ const routes: Routes = [
     // should only be called once in entire app
     RouterModule.forRoot(routes, {
       enableTracing: true, // debuggin purposes only
-      preloadingStrategy: PreloadAllModules
+      preloadingStrategy: SelectivePreloadingStrategy
     })
   ],
   exports: [RouterModule], // makes router directives available to companion module that imports it
-  providers: [CanDeactivateGuard]
+  providers: [CanDeactivateGuard, SelectivePreloadingStrategy]
 })
 export class AppRoutingModule {}
