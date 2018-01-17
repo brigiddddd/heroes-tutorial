@@ -1,4 +1,3 @@
-import { AdminModule } from './admin/admin.module';
 import { DialogService } from './dialog.service';
 import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
@@ -27,7 +26,6 @@ import { Router } from '@angular/router';
     CrisisCenterModule,
     HeroesModule,
     LoginRoutingModule,
-    AdminModule,
     AppRoutingModule
   ],
   declarations: [AppComponent, PageNotFoundComponent, ComposeMessageComponent, LoginComponent],

@@ -6,10 +6,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactModule } from './contact/contact.module';
 import { PageNotFoundComponent } from './not-found.component';
 import { ComposeMessageComponent } from './compose-message.component';
+import { AuthGuard } from './auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/heroes', pathMatch: 'full' },
   { path: 'compose', component: ComposeMessageComponent, outlet: 'popup' },
+  {
+    path: 'admin',
+    loadChildren: 'app/admin/admin.module#AdminModule',
+    canLoad: [AuthGuard]
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 
