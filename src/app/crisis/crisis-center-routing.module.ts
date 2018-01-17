@@ -12,11 +12,6 @@ import { CrisisDetailResolver } from './crisis-detail-resolver.service';
 const crisisCenterRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/crisis-center',
-    pathMatch: 'full'
-  },
-  {
-    path: 'crisis-center',
     component: CrisisCenterComponent,
     children: [
       {

@@ -1,7 +1,7 @@
 import { CanDeactivateGuard } from './can-deactivate-guard.service';
 import { AdminComponent } from './admin/admin.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 import { ContactModule } from './contact/contact.module';
 import { PageNotFoundComponent } from './not-found.component';
@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: 'app/admin/admin.module#AdminModule',
     canLoad: [AuthGuard]
   },
+  {
+    path: 'crisis-center',
+    loadChildren: 'app/crisis/crisis-center.module#CrisisCenterModule'
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -24,7 +28,10 @@ const routes: Routes = [
     ContactModule,
     // forRoot - Configures router for supplied routes, initializes Angular router itself
     // should only be called once in entire app
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {
+      enableTracing: true, // debuggin purposes only
+      preloadingStrategy: PreloadAllModules
+    })
   ],
   exports: [RouterModule], // makes router directives available to companion module that imports it
   providers: [CanDeactivateGuard]

@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeroesModule } from './heroes/heroes.module';
 import { FormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './not-found.component';
-import { CrisisCenterModule } from './crisis/crisis-center.module';
 import { ComposeMessageComponent } from './compose-message.component';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
@@ -23,12 +22,16 @@ import { Router } from '@angular/router';
     BrowserAnimationsModule,
     FormsModule,
     CoreModule.forRoot({ userName: 'Miss Marple' }),
-    CrisisCenterModule,
     HeroesModule,
     LoginRoutingModule,
     AppRoutingModule
   ],
-  declarations: [AppComponent, PageNotFoundComponent, ComposeMessageComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    PageNotFoundComponent,
+    ComposeMessageComponent,
+    LoginComponent
+  ],
   providers: [DialogService],
   bootstrap: [AppComponent]
 })
