@@ -1,13 +1,19 @@
-import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
-import { CanDeactivateGuard } from './can-deactivate-guard.service';
-import { AdminComponent } from './admin/admin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
+
+import { AuthGuard } from './auth-guard.service';
+import { CanDeactivateGuard } from './can-deactivate-guard.service';
+
 import { ContactModule } from './contact/contact.module';
+import { ComponentInteractionModule } from './component-interaction/component-interaction.module';
+import { MyFormsModule } from './forms/forms.module';
+
+import { AdminComponent } from './admin/admin.component';
 import { PageNotFoundComponent } from './not-found.component';
 import { ComposeMessageComponent } from './compose-message.component';
-import { AuthGuard } from './auth-guard.service';
+
 
 const routes: Routes = [
   { path: 'compose', component: ComposeMessageComponent, outlet: 'popup' },
@@ -27,7 +33,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    ComponentInteractionModule,
     ContactModule,
+    MyFormsModule,
     // forRoot - Configures router for supplied routes, initializes Angular router itself
     // should only be called once in entire app
     RouterModule.forRoot(routes, {

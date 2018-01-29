@@ -1,6 +1,7 @@
-import { AstronautComponent } from './child/astronaut.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { AstronautComponent } from './child/astronaut.component';
 import { VoterComponent } from './child/voter.component';
 import { VoteTakerComponent } from './parent/voteTaker.component';
 import { ComponentInteractionComponent } from './component-interaction.component';
@@ -13,6 +14,7 @@ import { HeroChildComponent } from './child/hero-child.component';
 import { CountdownTimerComponent } from './child/countdown-timer.component';
 import { CountdownLocalVarParentComponent, CountdownViewChildParentComponent } from './parent/countdown-parent.component';
 import { MissionControlComponent } from './parent/missioncontrol.component';
+
 import { ComponentInteractionRoutingModule } from './componentInteraction-routing.module';
 
 @NgModule({
