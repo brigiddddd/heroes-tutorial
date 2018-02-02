@@ -32,4 +32,8 @@ export class FormsComponent implements OnDestroy {
   redirectToValidation() {
     this.router.navigate(['forms/validation']);
   }
+
+  redirectToDynamic() {
+    this.router.navigate(['forms/dynamic']);
+  }
 }

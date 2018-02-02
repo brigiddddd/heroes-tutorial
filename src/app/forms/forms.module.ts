@@ -11,8 +11,15 @@ import { HeroFormReactiveComponent } from './hero-form-reactive/hero-form-reacti
 import { HeroDetailComponent } from './hero-form-reactive/hero-detail/hero-detail.component';
 import { HeroListComponent } from './hero-form-reactive/hero-list/hero-list.component';
 import { UserInputComponent } from './user-input.component';
-import { HeroFormTemplateComponent, ForbiddenValidatorDirective } from './validation/hero-form-template/hero-form-template.component';
-
+import {
+  HeroFormTemplateComponent,
+  ForbiddenValidatorDirective
+} from './validation/hero-form-template/hero-form-template.component';
+import { DynamicComponent } from './dynamic/dynamic.component';
+import { DynamicFormComponent } from './dynamic/dynamic-form/dynamic-form.component';
+import { DynamicFormQuestionComponent } from './dynamic/dynamic-form-question/dynamic-form-question.component';
+import { QuestionControlService } from './dynamic/question-control.service';
+import { QuestionService } from './dynamic/question.service';
 
 @NgModule({
   imports: [CommonModule, FormsRoutingModule, FormsModule, ReactiveFormsModule],
@@ -27,7 +34,10 @@ import { HeroFormTemplateComponent, ForbiddenValidatorDirective } from './valida
     HeroListComponent,
     UserInputComponent,
     HeroFormTemplateComponent,
-    ForbiddenValidatorDirective
+    ForbiddenValidatorDirective,
+    DynamicComponent,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent
   ]
 })
 export class MyFormsModule {}
