@@ -14,7 +14,6 @@ import { AdminComponent } from './admin/admin.component';
 import { PageNotFoundComponent } from './not-found.component';
 import { ComposeMessageComponent } from './compose-message.component';
 
-
 const routes: Routes = [
   { path: 'compose', component: ComposeMessageComponent, outlet: 'popup' },
   {
@@ -26,6 +25,10 @@ const routes: Routes = [
     path: 'crisis-center',
     loadChildren: 'app/crisis/crisis-center.module#CrisisCenterModule',
     data: { preload: true }
+  },
+  {
+    path: 'forms',
+    loadChildren: 'app/forms/forms.module#MyFormsModule'
   },
   { path: '', redirectTo: '/superheroes', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
@@ -39,7 +42,7 @@ const routes: Routes = [
     // forRoot - Configures router for supplied routes, initializes Angular router itself
     // should only be called once in entire app
     RouterModule.forRoot(routes, {
-      enableTracing: true, // debuggin purposes only
+      enableTracing: false, // debugging purposes only (console)
       preloadingStrategy: SelectivePreloadingStrategy
     })
   ],

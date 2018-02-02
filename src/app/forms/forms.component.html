@@ -1,20 +1,8 @@
 <h2>Angular Forms</h2>
-<div>
-  <h3>User Input</h3>
-  <div>
-    <h4>Get user input from the $event object</h4>
-    <div>
-      <app-key-up1></app-key-up1>
-    </div>
-    * "passing the $event is a dubious practice"
-  </div>
-  <div>
-    <h4>Get user input from a template reference variable, key event filtering (with key.enter), onBlur</h4>
-    <app-key-up4></app-key-up4>
-  </div>
-</div>
-<div>
-  <h3>Forms</h3>
-  <h4>Template-driven forms</h4>
-  <app-hero-form></app-hero-form>
-</div>
+
+<nav>
+  <button (click)="redirectToUserInput();">User Input</button>
+  <button (click)="redirectToTemplate();">Template-driven forms</button>
+  <button (click)="redirectToReactive();">Reactive forms</button>
+</nav>
+<router-outlet></router-outlet>

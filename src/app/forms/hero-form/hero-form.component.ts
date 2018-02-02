@@ -8,7 +8,7 @@ import { Hero } from '../../heroes/hero';
 })
 export class HeroFormComponent implements OnInit {
   powers = ['really smart', 'super flexible', 'super hot', 'weather changer'];
-  model = new Hero(18, 'Dr. IQ', false, 'Chuck Overstreet', this.powers[0]);
+  model = new Hero(18, 'Dr. IQ', false, [],'Chuck Overstreet', this.powers[0]);
 
   submitted = false;
 
@@ -21,10 +21,12 @@ export class HeroFormComponent implements OnInit {
   }
 
   newHero() {
-    this.model = new Hero(42, '', false, '', '');
+    this.model = new Hero(42, '', false);
   }
 
-  constructor() {}
+  constructor() {
+    console.log('TemplateDrivenForms: hero component loaded');
+  }
 
   ngOnInit() {}
 }
