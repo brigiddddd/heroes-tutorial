@@ -1,7 +1,6 @@
 <div *ngIf="hero">
-  <h2>{{hero.name}} details!</h2>
-  <div>
-    <label>id: </label>{{hero.id}}</div>
+  <h2>Editing {{hero.name}}</h2>
+  <!--
   <div>
     <label>name: </label>
     <input [(ngModel)]="hero.name" placeholder="name" />
@@ -9,8 +8,85 @@
   <div>
     <input id="can-fly" type="checkbox" [(ngModel)]="hero.canFly">can fly
   </div>
-  <hero-birthday></hero-birthday>
-  <power-boost-calculator></power-boost-calculator>
-  <button (click)="goToHeroes(hero)">Back to Heroes</button>
+
   <button (click)="save()">Save</button>
+ -->
+  <div>
+    <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" nonvalidate>
+      <div style="margin-bottom: 1em">
+        <button type="submit" [disabled]="heroForm.pristine" class="btn btn-success">Save</button> &nbsp;
+        <button type="reset" (click)="revert()" [disabled]="heroForm.pristine" class="btn btn-danger">Revert</button> &nbsp;
+        <button (click)="goToHeroes(hero)" class="btn btn-danger">Back to Heroes List</button>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Name:
+          <input type="text" class="form-control" formControlName="name">
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Alter Ego:
+          <input type="text" class="form-control" formControlName="alterEgo">
+        </label>
+      </div>
+      <div class="checkbox">
+        <label class="center-block">
+          <input id="can-fly" type="checkbox" formControlName="canFly">I can fly.
+        </label>
+      </div>
+      <div class="checkbox">
+        <label class="center-block">
+          <input type="checkbox" formControlName="sidekick">I have a sidekick.
+        </label>
+      </div>
+      <div class="form-group radio">
+        Super power:
+        <label class="center-block">
+          <input type="radio" formControlName="power" value="flight">Flight</label>
+        <label class="center-block">
+          <input type="radio" formControlName="power" value="x-ray vision">X-ray vision</label>
+        <label class="center-block">
+          <input type="radio" formControlName="power" value="strength">Strength</label>
+      </div>
+
+      <div formArrayName="secretLairs" class="well well-lg">
+        <div *ngFor="let address of secretLairs.controls; let i=index" [formGroupName]="i">
+          <h4>Address #{{i + 1}}
+            <button (click)="removeLair(i)" type="button">Remove Lair</button>
+          </h4>
+          <div style="margin-left: 1em">
+            <div class="form-group">
+              <label class="center-block">Street:
+                <input class="form-control" formControlName="street">
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="center-block">City:
+                <input class="form-control" formControlName="city">
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="center-block">State:
+                <select class="form-control" formControlName="state">
+                  <option *ngFor="let state of states" [value]="state">{{state}}</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="center-block">Zip Code:
+                <input class="form-control" formControlName="zip">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button (click)="addLair()" type="button">Add a Secret Lair</button>
+    </form>
+    <hero-birthday></hero-birthday>
+    <power-boost-calculator></power-boost-calculator>
+  </div>
+  <!--
+  <p>heroForm value: {{ heroForm.value | json}}</p>
+  <p>secretLairs: {{ heroForm.value.secretLairs | json}}</p>
+  <p>secretLairs pristine: {{ heroForm.get('secretLairs').pristine | json}}</p>
+   -->
 </div>

@@ -11,7 +11,7 @@ import { FlyingHeroesComponent } from './flying-heroes.component';
 import { FlyingHeroesPipe } from './flying-heroes.pipe';
 import { HeroService } from './hero.service';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -28,6 +28,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     HeroesRoutingModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
     // TODO: The HttpClientInMemoryWebApiModule module intercepts HTTP requests and returns simulated server responses.
