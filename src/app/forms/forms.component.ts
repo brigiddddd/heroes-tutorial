@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forms',
-  templateUrl: './forms.component.html',
-  styles: []
+  templateUrl: './forms.component.html'
 })
 export class FormsComponent implements OnDestroy {
   constructor(private router: Router) {
@@ -28,5 +27,9 @@ export class FormsComponent implements OnDestroy {
   redirectToReactive() {
     console.log('redirectToReactive');
     this.router.navigate(['forms/reactive']);
+  }
+
+  redirectToValidation() {
+    this.router.navigate(['forms/validation']);
   }
 }

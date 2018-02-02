@@ -1,0 +1,41 @@
+<h3>Template Driven Validation</h3>
+<p>
+  The 'input' element carries the HTML validation attributes: required and minlength(4). It also carries a custom validator
+  directive, forbiddenName ('bob').
+</p>
+
+<input id="nameT" name="nameT" class="form-control" required minlength="4" forbiddenName="bob" [(ngModel)]="hero.name" #nameT="ngModel">
+
+<!-- The checks for dirty and touched prevent errors from showing until the user does one of two things:
+  changes the value, turning the control dirty; or blurs the form control element, setting the control to touched. -->
+<div *ngIf="nameT.invalid && (nameT.dirty || nameT.touched)" class="alert alert-danger">
+  <div *ngIf="nameT.errors.required">
+    Name is required.
+  </div>
+  <div *ngIf="nameT.errors.minlength">
+    Name must be at least 4 characters long.
+  </div>
+  <div *ngIf="nameT.errors.forbiddenName">
+    Name cannot contain Bob.
+  </div>
+</div>
+
+<h3>Reactive Form Validation</h3>
+<p>In a reactive form, the source of truth is the component class. Instead of adding validators through attributes in the template,
+  you add validator functions directly to the form control model.</p>
+<p>There are two types of validator functions: sync and async validators.</p>
+
+<form [formGroup]="heroForm" nonvalidate>
+  <input id="nameR" class="form-control" formControlName="nameR" required>
+  <div *ngIf="nameR.invalid && (nameR.dirty || nameR.touched)" class="alert alert-danger">
+    <div *ngIf="nameR.errors.required">
+      Name is required.
+    </div>
+    <div *ngIf="nameR.errors.minlength">
+      Name must be at least 4 characters long.
+    </div>
+    <div *ngIf="nameR.errors.forbiddenName">
+      Name cannot contain Bob.
+    </div>
+  </div>
+</form>
