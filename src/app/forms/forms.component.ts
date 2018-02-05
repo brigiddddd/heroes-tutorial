@@ -36,4 +36,8 @@ export class FormsComponent implements OnDestroy {
   redirectToDynamic() {
     this.router.navigate(['forms/dynamic']);
   }
+
+  redirectToCustom() {
+    this.router.navigate(['forms/customFormControls']);
+  }
 }

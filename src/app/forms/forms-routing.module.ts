@@ -7,6 +7,7 @@ import { HeroFormComponent } from './hero-form/hero-form.component';
 import { UserInputComponent } from './user-input.component';
 import { HeroFormTemplateComponent } from './validation/hero-form-template/hero-form-template.component';
 import { DynamicComponent } from './dynamic/dynamic.component';
+import { CustomFormControlsComponent } from './custom-form-controls/custom-form-controls.component';
 
 const routes = [
   {
@@ -17,7 +18,8 @@ const routes = [
       { path: 'template-driven', component: HeroFormComponent },
       { path: 'reactive', component: HeroListComponent },
       { path: 'validation', component: HeroFormTemplateComponent },
-      { path: 'dynamic', component: DynamicComponent }
+      { path: 'dynamic', component: DynamicComponent },
+      { path: 'customFormControls', component: CustomFormControlsComponent }
     ]
   }
 ];

@@ -20,6 +20,8 @@ import { DynamicFormComponent } from './dynamic/dynamic-form/dynamic-form.compon
 import { DynamicFormQuestionComponent } from './dynamic/dynamic-form-question/dynamic-form-question.component';
 import { QuestionControlService } from './dynamic/question-control.service';
 import { QuestionService } from './dynamic/question.service';
+import { CounterInputComponent } from './custom-form-controls/counter-input.component';
+import { CustomFormControlsComponent } from './custom-form-controls/custom-form-controls.component';
 
 @NgModule({
   imports: [CommonModule, FormsRoutingModule, FormsModule, ReactiveFormsModule],
@@ -37,7 +39,9 @@ import { QuestionService } from './dynamic/question.service';
     ForbiddenValidatorDirective,
     DynamicComponent,
     DynamicFormComponent,
-    DynamicFormQuestionComponent
+    DynamicFormQuestionComponent,
+    CounterInputComponent,
+    CustomFormControlsComponent
   ]
 })
 export class MyFormsModule {}
