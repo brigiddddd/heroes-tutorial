@@ -58,6 +58,11 @@ export class CustomFormControlsComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       // TODO: Apparently you can't (or I can't) have the max and min be dynamic when doing the validator this way.
+      // Okay, actually what apparently is happening is that the initial max/min values are always restricted.
+      //   Then if you change them to be less than the max or greater than the min, those new controls hold.
+      //   So, to truly fix it, we need to figure out how to get rid of that initial validation.
+      //    e.g. Start out with them set at 4 and 6, and you can change either (or both to 5) and it will work.
+      //         But you can never then set it to 7 or 3.
       counter: [this.counterValue, createCounterRangeValidator(this.max, this.min)]
     });
   }
